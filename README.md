@@ -1,73 +1,21 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Título do projeto
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este é um projeto de uma API RESTful em JSON para um catálogo de filmes, com autenticação JWT e uma CRUD para gerenciar os filmes. Todos os endpoints da CRUD só podem ser acessados por um usuário autenticado, que tem o login como admin, e sua senha é definida como admin123, essas informações podem ser modificadas,e  podem ser definidas no arquivo .env. A aplicação foi desenvolvida usando TypeScript, Nest.js, TypeORM, Swagger, Docker, Redis e PostgreSQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### 📋 Pré-requisitos
 
-## Description
+Para conseguir acompanhar esse projeto, tem que ter conhecimento principalmente de nest, a partir desse conhecimento pode buscar como funciona outras ferramentes aqui utilizadas. Não é necessário conhecimento de docker.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### 🔧 Rodando Localmente
 
-## Installation
+Para rodar localmente tem que ter o docker instalado para rodar o nosso container, com o docker instalado basta seguir os seguintes passos:
 
-```bash
-$ npm install
-```
+- docker-compose up -> necessário para rodar o nosso conteiner com o banco de dados. Ao rodar ele um banco postgress tem que ser criado no endpoint http://localhost:8080/ . A partir desse endpoint as seguintes informações tem que ser preenchidas => sistema: PostgreSQL, servidor: db, usuário: pguser, senha: pgpassword.
+- para rodar a aplicação nest basta usar o comando npm run dev.
 
-## Running the app
+## ⚙️ Executando os testes
 
-```bash
-# development
-$ npm run start
+Para executar os testes temos que olhar os endpoints presentes na api, eles podem ser vistos no endpoint do swagger http://localhost:3000/api#/ , lá todos os endpoints estão presentes. Mas para conseguir rodar tudo certo, utilizando autenticação jwt, temos que rodar da seguinte forma:
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- primeiro devemos fazer uma requisição para o endpoint /auth/login o body deve conter as seguintes informações que foram pré-definidas em nossa aplicação : {"username":"admin","password": "admin123"}. A resposta desse endpoint será um token jwt que terá que ser utilizado em todas as outras requisições.
+- para fazer os outros testes, basta ir no endpoint do swagger e rodar de acordo com o body que está lá.
