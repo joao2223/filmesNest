@@ -1,4 +1,4 @@
-# Título do projeto
+# Aplicação Nest para catálogo de filmes
 
 Este é um projeto de uma API RESTful em JSON para um catálogo de filmes, com autenticação JWT e uma CRUD para gerenciar os filmes. Todos os endpoints da CRUD só podem ser acessados por um usuário autenticado, que tem o login como admin, e sua senha é definida como admin123, essas informações podem ser modificadas,e  podem ser definidas no arquivo .env. A aplicação foi desenvolvida usando TypeScript, Nest.js, TypeORM, Swagger, Docker, Redis e PostgreSQL.
 
